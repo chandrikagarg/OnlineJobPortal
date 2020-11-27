@@ -12,7 +12,7 @@ public class UserAccount {
     String contactNumber;
     Date registrationdate;
 
-    public UserAccount(int id, String email, String password, Date dateOfBirth, char gender, char isActive, String contactNumber, Date registrationdate) {
+    public UserAccount(Long id, String email, String password, Date dateOfBirth, char gender, char isActive, String contactNumber, Date registrationdate) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -23,11 +23,11 @@ public class UserAccount {
         this.registrationdate = registrationdate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
