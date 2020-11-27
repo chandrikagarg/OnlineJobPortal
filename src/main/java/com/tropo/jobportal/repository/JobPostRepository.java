@@ -1,4 +1,7 @@
 package com.tropo.jobportal.repository;
 
-public class JobPostRepository {
+import com.tropo.jobportal.bean.JobPost;
+import org.springframework.data.repository.CrudRepository;
+
+public interface JobPostRepository extends CrudRepository<JobPost, Integer> {
 }

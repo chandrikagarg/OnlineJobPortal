@@ -1,12 +1,8 @@
 package com.tropo.jobportal.controller;
 import com.tropo.jobportal.bean.JobPost;
-import com.tropo.jobportal.dao.JobPostDao;
-import com.tropo.jobportal.exception.JobPostException;
+import com.tropo.jobportal.service.JobPostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,17 +11,31 @@ import java.util.List;
 public class JobPostController {
 
     @Autowired
-    private JobPostDao jobPostdao;
-
-    @RequestMapping("/list/posts")
-    public List<JobPost> view() throws JobPostException {
-        List<JobPost> listOfJobs = jobPostdao.listOfJobPosts();
-        return listOfJobs;
+    JobPostService jobPostService;
+    //creating a get mapping that retrieves all the jobs detail from the database
+    @GetMapping("/jobPosts")
+    private List<JobPost> getAllPosts()
+    {
+        return jobPostService.getAllJobs();
     }
+    //creating a get mapping that retrieves the detail of a specific Job
+    @GetMapping("/job/{id}")
+    private JobPost getJob(@PathVariable("id") int id)
+    {
+        return jobPostService.getJobPostById(id);
+    }
+    //creating a delete mapping that deletes a specific job
+    @DeleteMapping("/job/{id}")
+    private void deleteJob(@PathVariable("id") int id)
+    {
+        jobPostService.delete(id);
+    }
+    //creating post mapping that post the job detail in the database
     @PostMapping("/job")
-    public int createpost(@RequestBody JobPost jobPost) {
-//        return jobPostdao.addJob(jobPost);
-        return 0;
+    private Long saveJob(@RequestBody JobPost jobPost)
+    {
+        jobPostService.saveOrUpdate(jobPost);
+        return jobPost.getId();
     }
 
     @RequestMapping("/")

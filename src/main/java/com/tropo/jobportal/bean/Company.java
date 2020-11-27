@@ -1,21 +1,26 @@
-package com.tropo.jobportal;
+package com.tropo.jobportal.bean;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table
 public class Company {
+    @Id
+    @Column
     Long id;
+    @Column
     String companyname;
+    @Column
     String companyDescription;
+    @Column
     Date establishmentDate;
+    @Column
     String companyWebsiteUrl;
 
-    public Company(Long id, String companyname, String companyDescription, Date establishmentDate, String companyWebsiteUrl) {
-        this.id = id;
-        this.companyname = companyname;
-        this.companyDescription = companyDescription;
-        this.establishmentDate = establishmentDate;
-        this.companyWebsiteUrl = companyWebsiteUrl;
-    }
+    @OneToMany( targetEntity=JobPost.class )
+    private List jobPost;
 
     public Long getId() {
         return id;
@@ -55,5 +60,13 @@ public class Company {
 
     public void setCompanyWebsiteUrl(String companyWebsiteUrl) {
         this.companyWebsiteUrl = companyWebsiteUrl;
+    }
+
+    public List getJobPost() {
+        return jobPost;
+    }
+
+    public void setJobPost(List jobPost) {
+        this.jobPost = jobPost;
     }
 }

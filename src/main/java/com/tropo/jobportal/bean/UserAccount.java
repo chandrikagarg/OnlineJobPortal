@@ -1,27 +1,36 @@
-package com.tropo.jobportal;
+package com.tropo.jobportal.bean;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table
 public class UserAccount {
+    @Id
+    @Column
     Long id;
+    @Column
     String email;
+    @Column
     String password;
+    @Column
     Date dateOfBirth;
+    @Column
     char gender;
+    @Column
     char isActive;
+    @Column
     String contactNumber;
+    @Column
     Date registrationdate;
 
-    public UserAccount(Long id, String email, String password, Date dateOfBirth, char gender, char isActive, String contactNumber, Date registrationdate) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.isActive = isActive;
-        this.contactNumber = contactNumber;
-        this.registrationdate = registrationdate;
-    }
+    @OneToMany( targetEntity=UserLog.class )
+    private List userLog;
+
+    @OneToMany( targetEntity=JobPost.class )
+    private List jobPost;
+
 
     public Long getId() {
         return id;
@@ -85,5 +94,21 @@ public class UserAccount {
 
     public void setRegistrationdate(Date registrationdate) {
         this.registrationdate = registrationdate;
+    }
+
+    public List getUserLog() {
+        return userLog;
+    }
+
+    public void setUserLog(List userLog) {
+        this.userLog = userLog;
+    }
+
+    public List getJobPost() {
+        return jobPost;
+    }
+
+    public void setJobPost(List jobPost) {
+        this.jobPost = jobPost;
     }
 }

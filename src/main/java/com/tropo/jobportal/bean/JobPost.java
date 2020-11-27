@@ -1,27 +1,35 @@
-package com.tropo.jobportal;
+package com.tropo.jobportal.bean;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
+@Table
 public class JobPost {
+    @Id
+    @Column
     Long id;
-    char isCompanyNameHidden;
+    @Column
+    Integer postedById;
+    @Column
+    Integer jobTypeId;
+    @Column
+    int companyId;
+    @Column
+    Boolean isCompanyNameHidden;
+    @Column
     Date createdDate;
+    @Column
     String jobDescription;
-    char isActive;
+    @Column
+    int jobLocationId;
+    @Column
+    Boolean isActive;
 
-    public JobPost(Long id, char isCompanyNameHidden, Date createdDate, String jobDescription, char isActive) {
-        this.id = id;
-        this.isCompanyNameHidden = isCompanyNameHidden;
-        this.createdDate = createdDate;
-        this.jobDescription = jobDescription;
-        this.isActive = isActive;
-    }
+    @ManyToOne
+    private JobType jobType;
 
-
-
-    public JobPost() {
-
-    }
+    @ManyToOne
+    private JobLocation jobLocation;
 
     public Long getId() {
         return id;
@@ -31,12 +39,44 @@ public class JobPost {
         this.id = id;
     }
 
-    public char getIsCompanyNameHidden() {
+    public Integer getPostedById() {
+        return postedById;
+    }
+
+    public void setPostedById(Integer postedById) {
+        this.postedById = postedById;
+    }
+
+    public Integer getJobTypeId() {
+        return jobTypeId;
+    }
+
+    public void setJobTypeId(Integer jobTypeId) {
+        this.jobTypeId = jobTypeId;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
+    public int getJobLocationId() {
+        return jobLocationId;
+    }
+
+    public void setJobLocationId(int jobLocationId) {
+        this.jobLocationId = jobLocationId;
+    }
+
+    public Boolean getCompanyNameHidden() {
         return isCompanyNameHidden;
     }
 
-    public void setIsCompanyNameHidden(char isCompanyNameHidden) {
-        this.isCompanyNameHidden = isCompanyNameHidden;
+    public void setCompanyNameHidden(Boolean companyNameHidden) {
+        isCompanyNameHidden = companyNameHidden;
     }
 
     public Date getCreatedDate() {
@@ -55,11 +95,27 @@ public class JobPost {
         this.jobDescription = jobDescription;
     }
 
-    public char getIsActive() {
+    public Boolean getActive() {
         return isActive;
     }
 
-    public void setIsActive(char isActive) {
-        this.isActive = isActive;
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public JobType getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(JobType jobType) {
+        this.jobType = jobType;
+    }
+
+    public JobLocation getJobLocation() {
+        return jobLocation;
+    }
+
+    public void setJobLocation(JobLocation jobLocation) {
+        this.jobLocation = jobLocation;
     }
 }
