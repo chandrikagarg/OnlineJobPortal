@@ -1,7 +1,10 @@
 package com.tropo.jobportal.bean;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table
 public class JobPost {
@@ -15,21 +18,17 @@ public class JobPost {
     @Column
     int companyId;
     @Column
-    Boolean isCompanyNameHidden;
+    Character isCompanyNameHidden;
     @Column
     Date createdDate;
     @Column
     String jobDescription;
-    @Column
-    int jobLocationId;
-    @Column
-    Boolean isActive;
 
-    @ManyToOne
-    private JobType jobType;
+    @Column
+    Long jobLocationId;
+    @Column
+    Character isActive;
 
-    @ManyToOne
-    private JobLocation jobLocation;
 
     public Long getId() {
         return id;
@@ -63,20 +62,12 @@ public class JobPost {
         this.companyId = companyId;
     }
 
-    public int getJobLocationId() {
+    public Long getJobLocationId() {
         return jobLocationId;
     }
 
-    public void setJobLocationId(int jobLocationId) {
+    public void setJobLocationId(Long jobLocationId) {
         this.jobLocationId = jobLocationId;
-    }
-
-    public Boolean getCompanyNameHidden() {
-        return isCompanyNameHidden;
-    }
-
-    public void setCompanyNameHidden(Boolean companyNameHidden) {
-        isCompanyNameHidden = companyNameHidden;
     }
 
     public Date getCreatedDate() {
@@ -95,27 +86,19 @@ public class JobPost {
         this.jobDescription = jobDescription;
     }
 
-    public Boolean getActive() {
+    public Character getIsCompanyNameHidden() {
+        return isCompanyNameHidden;
+    }
+
+    public void setIsCompanyNameHidden(Character isCompanyNameHidden) {
+        this.isCompanyNameHidden = isCompanyNameHidden;
+    }
+
+    public Character getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
-    }
-
-    public JobType getJobType() {
-        return jobType;
-    }
-
-    public void setJobType(JobType jobType) {
-        this.jobType = jobType;
-    }
-
-    public JobLocation getJobLocation() {
-        return jobLocation;
-    }
-
-    public void setJobLocation(JobLocation jobLocation) {
-        this.jobLocation = jobLocation;
+    public void setIsActive(Character isActive) {
+        this.isActive = isActive;
     }
 }

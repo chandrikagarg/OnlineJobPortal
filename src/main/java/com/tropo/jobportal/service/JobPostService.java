@@ -20,7 +20,7 @@ public class JobPostService {
         return jobPosts;
     }
     //getting a specific record
-    public JobPost getJobPostById(int id)
+    public JobPost getJobPostById(Long id)
     {
         return jobPostRepository.findById(id).get();
     }
@@ -29,7 +29,7 @@ public class JobPostService {
         jobPostRepository.save(jobPost);
     }
     //deleting a specific record
-    public void delete(int id)
+    public void delete(Long id)
     {
         jobPostRepository.deleteById(id);
     }

@@ -1,9 +1,7 @@
 package com.tropo.jobportal.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -13,6 +11,9 @@ public class JobType {
     int id;
     @Column
     String jobType;
+
+    @OneToMany(targetEntity=JobPost.class )
+    private List jobPost;
 
     public int getId() {
         return id;

@@ -1,16 +1,14 @@
 package com.tropo.jobportal.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
 public class JobLocation {
     @Id
     @Column
-    int id;
+    Long id;
     @Column
     String streetAdress;
     @Column
@@ -22,11 +20,14 @@ public class JobLocation {
     @Column
     String zip;
 
-    public int getId() {
+    @OneToMany(targetEntity=JobPost.class )
+    private List jobPost;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

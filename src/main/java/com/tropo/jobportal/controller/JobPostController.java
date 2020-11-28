@@ -20,13 +20,13 @@ public class JobPostController {
     }
     //creating a get mapping that retrieves the detail of a specific Job
     @GetMapping("/job/{id}")
-    private JobPost getJob(@PathVariable("id") int id)
+    private JobPost getJob(@PathVariable("id") Long id)
     {
         return jobPostService.getJobPostById(id);
     }
     //creating a delete mapping that deletes a specific job
     @DeleteMapping("/job/{id}")
-    private void deleteJob(@PathVariable("id") int id)
+    private void deleteJob(@PathVariable("id") Long id)
     {
         jobPostService.delete(id);
     }

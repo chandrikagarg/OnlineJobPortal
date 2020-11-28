@@ -19,7 +19,7 @@ public class Company {
     @Column
     String companyWebsiteUrl;
 
-    @OneToMany( targetEntity=JobPost.class )
+    @OneToMany(targetEntity=JobPost.class )
     private List jobPost;
 
     public Long getId() {
