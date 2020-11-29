@@ -14,7 +14,7 @@ public class JobPostController {
     JobPostService jobPostService;
     //creating a get mapping that retrieves all the jobs detail from the database
     @GetMapping("/jobPosts")
-    private List<JobPost> getAllPosts()
+    private List<JobPost> getAllJobPosts()
     {
         return jobPostService.getAllJobs();
     }

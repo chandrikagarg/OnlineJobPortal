@@ -46,7 +46,7 @@ id NUMBER primary key,
 SKILL_SET_NAME varchar(50))
 
 create table JOB_POST (
-ID number primary key,
+ID number AUTO_INCREMENT primary key,
 POSTED_BY_ID number,
 JOB_TYPE_ID number,
 COMPANY_ID number,

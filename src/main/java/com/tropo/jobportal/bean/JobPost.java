@@ -9,7 +9,7 @@ import java.util.List;
 @Table
 public class JobPost {
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Column
     Integer postedById;
