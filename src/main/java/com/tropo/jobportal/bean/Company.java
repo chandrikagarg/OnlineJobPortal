@@ -10,13 +10,13 @@ public class Company {
     @Id
     @Column
     Long id;
-    @Column
+    @Column(unique=true)
     String companyname;
     @Column
     String companyDescription;
     @Column
     Date establishmentDate;
-    @Column
+    @Column(unique=true)
     String companyWebsiteUrl;
 
     @OneToMany(targetEntity=JobPost.class )

@@ -10,10 +10,10 @@ public class UserAccount {
     @Id
     @Column
     Long id;
-    @Column
+    @Column(unique=true)
     String email;
     @Column
-    String password;
+    String password; // todo password should be encrypted, should not be stored in plain text
     @Column
     Date dateOfBirth;
     @Column

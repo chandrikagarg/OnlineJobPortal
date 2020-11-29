@@ -93,3 +93,6 @@ select * from COMPANY;
 
 INSERT INTO JOB_LOCATION VALUES(1,'banglore','banglore','banglore','India','560095');
 select * from JOB_LOCATION
+
+CREATE UNIQUE INDEX unique_job_post_idx
+ON JOB_POST (JOB_TYPE_ID,COMPANY_ID);
